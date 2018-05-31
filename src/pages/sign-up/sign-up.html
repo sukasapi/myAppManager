@@ -1,0 +1,49 @@
+<!--
+  Generated template for the SignUpPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>SignUp</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<!-- FORM SIGN UP/ REGISTRASI-->
+
+<form [formGroup]="signupForm" (submit)="signupUser()" novalidate > <!--fungsi login ada di login.ts bukan di provider-->
+  <ion-item>
+      <ion-label stacked>email</ion-label>
+      <ion-input formControlName="email" type="email" 
+      placeholder="masukkan email anda .." 
+      [class.invalid]="!signupForm.controls.email.valid && blur"></ion-input>
+  </ion-item> 
+  <!--jika error maka muncul pesan-->
+  <ion-item class="error-message"  
+  *ngIf="!signupForm.controls.email.valid && signupForm.controls.email.touched">
+    <p>masukkan email pengguna dengan benar</p>
+  </ion-item>
+
+  <ion-item>
+      <ion-label stacked>Kata Kunci</ion-label>
+      <ion-input formControlName="pass" type="password" 
+      aria-placeholder="masukkan password anda .." 
+      [class.invalid]="!signupForm.controls.pass.valid && blur"></ion-input>
+  </ion-item> 
+  <ion-item class="error-message"  
+  *ngIf="!signupForm.controls.pass.valid && signupForm.controls.pass.touched">
+    <p>masukkan password anda</p>
+  </ion-item>
+
+  <button ion-button color="light" block type="submit" [disabled]="!signupForm.valid">
+    Buat User
+  </button>
+</form>
+
+</ion-content>
